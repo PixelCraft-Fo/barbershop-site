@@ -31,6 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // PERSONALIZARE: Token-ul se pune din interfața site-ului
     let apiKey = '';
+    // Verifică dacă e un prompt de token în URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('token')) {
+        apiKey = urlParams.get('token');
+    }
 
     // Încearcă din localStorage
     if (!apiKey) {
