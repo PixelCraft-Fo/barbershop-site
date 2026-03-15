@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     try {
         const body = req.body;
         
-        const response = await fetch('https://api.replicate.com/v1/models/flux-kontext-apps/change-haircut/predictions', {
+      const response = await fetch('https://api.replicate.com/v1/models/black-forest-labs/flux-kontext-pro/predictions', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + API_TOKEN,
@@ -21,9 +21,7 @@ export default async function handler(req, res) {
             body: JSON.stringify({
                 input: {
                     input_image: body.image,
-                    haircut_style: body.style,
-                    hair_color: body.color || 'No change',
-                    gender: 'male'
+                    prompt: body.prompt
                 }
             })
         });
