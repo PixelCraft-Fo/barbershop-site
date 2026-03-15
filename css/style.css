@@ -283,11 +283,16 @@ em { font-family: var(--font-display); font-style: italic; color: var(--gold); }
 .style-section { text-align: center; margin-top: 32px; }
 .style-section h3 { font-family: var(--font-display); font-size: 22px; color: var(--cream); margin-bottom: 24px; }
 .style-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.style-buttons-grid { grid-template-columns: repeat(5, 1fr); }
+.upload-area { display: block; }
 .style-btn {
     background: var(--brown); border: 1px solid rgba(198,165,92,0.15);
     padding: 24px 16px; cursor: pointer; transition: all 0.35s; text-align: center;
 }
 .style-btn:hover { border-color: var(--gold); background: var(--brown-mid); transform: translateY(-2px); }
+.style-btn-active { border-color: var(--gold); background: var(--gold); }
+.style-btn-active .style-name, .style-btn-active .style-desc { color: var(--brown-dark); }
+.style-btn-active .style-icon { filter: grayscale(0); }
 .style-icon { display: block; font-size: 28px; margin-bottom: 8px; }
 .style-name { display: block; font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--cream); margin-bottom: 4px; }
 .style-desc { display: block; font-size: 12px; color: var(--text-muted); }
@@ -380,6 +385,7 @@ em { font-family: var(--font-display); font-style: italic; color: var(--gold); }
     .cards-grid, .testimonials-grid, .services-full-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
     .style-buttons { grid-template-columns: 1fr; }
+    .style-buttons-grid { grid-template-columns: repeat(2, 1fr); }
     .result-compare { flex-direction: column; }
     .result-arrow { transform: rotate(90deg); }
     .stats-row { gap: 24px; }
