@@ -63,17 +63,18 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => transformImage(btn.dataset.style));
     });
 
-   const stylePrompts = {
-        buzzcut: 'Give this person a buzz cut hairstyle. Shave the hair very short all around the head, military style, 3mm length all over.',
-        sidepart: 'Give this person a classic side part hairstyle. Medium length on top, combed neatly to one side, shorter tapered sides.',
-        flowhair: 'Give this person long flowing hair reaching past the shoulders. Wavy, natural, free-flowing long hair.',
-        fade: 'Give this person a high skin fade haircut. Skin shaved on the sides gradually blending into textured short hair on top.',
-        pompadour: 'Give this person a pompadour hairstyle. Hair swept upward and back from the forehead with lots of volume on top, short sides.',
-        curly: 'Give this person tight curly hair. Natural afro-textured curls, medium length, bouncy and voluminous curly hair all over.',
-        mohawk: 'Give this person a mohawk hairstyle. Sides of the head completely shaved, with a tall strip of hair running from front to back on top.',
-        mullet: 'Give this person a mullet hairstyle. Short hair on top and sides, but long hair flowing down the back of the neck and shoulders.',
-        braids: 'Give this person cornrow braids. Hair braided in tight straight rows close to the scalp, running from the forehead to the back of the head.',
-        lowtaper: 'Give this person a low taper fade. Hair gradually fades shorter around the ears and neckline only, keeping longer textured hair on top.'
+    // Stilurile predefinite ale modelului change-haircut
+    const styleMap = {
+        buzzcut: 'Buzz Cut',
+        sidepart: 'Side Part',
+        flowhair: 'Long and Flowing',
+        fade: 'Fade',
+        pompadour: 'Pompadour',
+        curly: 'Curly',
+        mohawk: 'Mohawk',
+        mullet: 'Mullet',
+        braids: 'Braids',
+        lowtaper: 'Low Taper Fade'
     };
 
     async function transformImage(style) {
@@ -86,7 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     image: 'data:image/jpeg;base64,' + currentImageBase64,
-                    prompt: stylePrompts[style]
+                    style: styleMap[style] || style,
+                    color: 'No change',
+                    gender: 'Autodetect'
                 })
             });
 
@@ -103,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (error) {
             let msg = error.message;
-            if (msg.includes('insufficient credit')) msg = 'Serviciul AI este temporar indisponibil. Revino mai târziu.';
+            if (msg.includes('insufficient credit')) msg = 'Serviciul AI este temporar indisponibil.';
             else if (msg.includes('Failed to fetch')) msg = 'Eroare de rețea. Verifică conexiunea.';
             showError(msg);
         }
