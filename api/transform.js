@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     if (req.method === 'OPTIONS') return res.status(200).end();
     if (req.method !== 'POST') return res.status(405).json({ error: 'Not allowed' });
 
-    const API_TOKEN = 'r8_ZGnBU1bgIIKtxX7Dcgly37QI3gezJVW0rN2qG';
+    const API_TOKEN = process.env.REPLICATE_API_TOKEN;
 
     try {
         const body = req.body;
