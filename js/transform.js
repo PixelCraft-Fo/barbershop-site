@@ -26,8 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentImageDataUrl = null;
 
     // API key din localStorage
-    let apiKey = localStorage.getItem('replicate_api_key') || '';
-    const CORS_PROXY = 'https://corsproxy.io/?';
+   
 
     function showSection(section) {
         [uploadArea, previewArea, loadingArea, resultArea, errorArea].forEach(el => {
@@ -107,11 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Transform image with Replicate API — black-forest-labs/flux-kontext-pro
-    async function transformImage(style) {
-        if (!apiKey) {
-            showError('Te rog configurează API token-ul Replicate (localStorage: replicate_api_key).');
-            return;
-        }
+   async function transformImage(style) {
         if (!currentImageBase64) { showError('Încarcă o imagine mai întâi.'); return; }
         showSection(loadingArea);
 
@@ -119,81 +114,32 @@ document.addEventListener('DOMContentLoaded', () => {
             const prompt = stylePrompts[style];
             if (!prompt) throw new Error('Stil necunoscut: ' + style);
 
-            // Model-based API endpoint — flux-kontext-pro
-            const endpoint = 'https://api.replicate.com/v1/models/black-forest-labs/flux-kontext-pro/predictions';
-
-            const response = await fetch(CORS_PROXY + endpoint, {
+            const response = await fetch('/api/transform', {
                 method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${apiKey}`,
-                    'Content-Type': 'application/json',
-                    'Prefer': 'wait'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    input: {
-                        input_image: 'data:image/jpeg;base64,' + currentImageBase64,
-                        prompt: prompt
-                    }
+                    image: 'data:image/jpeg;base64,' + currentImageBase64,
+                    prompt: prompt
                 })
             });
 
-            if (!response.ok) {
-                const errData = await response.json().catch(() => ({}));
-                throw new Error(errData.detail || `Eroare API: ${response.status}`);
-            }
+            const result = await response.json();
+            if (result.error) throw new Error(result.error);
 
-            const prediction = await response.json();
-
-            // If status is "succeeded" directly (Prefer: wait)
-            if (prediction.status === 'succeeded' && prediction.output) {
-                const outputUrl = Array.isArray(prediction.output) ? prediction.output[0] : prediction.output;
+            if (result.output) {
+                const outputUrl = Array.isArray(result.output) ? result.output[0] : result.output;
                 originalResult.src = currentImageDataUrl;
                 transformedResult.src = outputUrl;
                 showSection(resultArea);
-                return;
-            }
-
-            // Otherwise, poll for result
-            if (prediction.urls && prediction.urls.get) {
-                const result = await pollForResult(prediction.urls.get);
-                if (result.status === 'succeeded' && result.output) {
-                    const outputUrl = Array.isArray(result.output) ? result.output[0] : result.output;
-                    originalResult.src = currentImageDataUrl;
-                    transformedResult.src = outputUrl;
-                    showSection(resultArea);
-                } else {
-                    throw new Error(result.error || 'Procesarea a eșuat. Încearcă din nou.');
-                }
             } else {
                 throw new Error('Procesarea a eșuat. Încearcă din nou.');
             }
         } catch (error) {
             let msg = error.message;
-            if (msg.includes('insufficient credit') || msg.includes('payment')) {
-                msg = 'Credit insuficient pe Replicate. Adaugă credit la replicate.com/account/billing';
-            } else if (msg.includes('Unauthorized') || msg.includes('401')) {
-                msg = 'Token API invalid. Verifică token-ul Replicate.';
-            } else if (msg.includes('not exist') || msg.includes('not found')) {
-                msg = 'Modelul AI nu a fost găsit. Contactează administratorul site-ului.';
-            } else if (msg.includes('Failed to fetch') || msg.includes('NetworkError')) {
-                msg = 'Eroare de rețea. Verifică conexiunea la internet și încearcă din nou.';
-            }
+            if (msg.includes('insufficient credit')) msg = 'Serviciul AI este temporar indisponibil.';
+            else if (msg.includes('Failed to fetch')) msg = 'Eroare de rețea. Verifică conexiunea.';
             showError(msg);
         }
-    }
-
-    // Poll Replicate for result via CORS proxy
-    async function pollForResult(url, maxAttempts = 60) {
-        for (let i = 0; i < maxAttempts; i++) {
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            const response = await fetch(CORS_PROXY + url, {
-                headers: { 'Authorization': `Bearer ${apiKey}` }
-            });
-            if (!response.ok) throw new Error(`Polling error: ${response.status}`);
-            const result = await response.json();
-            if (result.status === 'succeeded' || result.status === 'failed') return result;
-        }
-        throw new Error('Timeout — procesarea a durat prea mult. Încearcă din nou.');
     }
 
     function showError(message) {
