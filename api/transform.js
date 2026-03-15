@@ -11,6 +11,23 @@ export default async function handler(req, res) {
     try {
         const body = req.body;
         
+        // Upload base64 image to Replicate file hosting
+        const base64Data = body.image.replace(/^data:image\/\w+;base64,/, '');
+        const imageBuffer = Buffer.from(base64Data, 'base64');
+        
+        const uploadResponse = await fetch('https://api.replicate.com/v1/files', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + API_TOKEN,
+                'Content-Type': 'application/octet-stream',
+            },
+            body: imageBuffer
+        });
+        
+        const uploadResult = await uploadResponse.json();
+        const imageUrl = uploadResult.urls.get;
+        
+        // Now run the model with the uploaded image URL
         const response = await fetch('https://api.replicate.com/v1/models/flux-kontext-apps/change-haircut/predictions', {
             method: 'POST',
             headers: {
@@ -20,7 +37,7 @@ export default async function handler(req, res) {
             },
             body: JSON.stringify({
                 input: {
-                    input_image: body.image,
+                    input_image: imageUrl,
                     haircut_style: body.style,
                     hair_color: body.color || 'No change',
                     gender: 'male'
