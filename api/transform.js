@@ -20,7 +20,7 @@ export default async function handler(req, res) {
             },
             body: JSON.stringify({
                 input: {
-                    image: body.image,
+                   input_image: body.image,
                     prompt: body.prompt
                 }
             })
