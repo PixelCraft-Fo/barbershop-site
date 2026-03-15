@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiKey = 'r8_ZIws8zbYFnbxABiVWuZS1t4gJrUFxrJ3PQKBX';
 
     // CORS Proxy pentru GitHub Pages
-    const CORS_PROXY = 'https://corsproxy.io/?';
+    const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
 
     function showSection(section) {
         [uploadArea, previewArea, loadingArea, resultArea, errorArea].forEach(el => {
