@@ -64,9 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const stylePrompts = {
-        short: 'short hair, buzz cut, fade haircut, clean modern short hairstyle',
-        medium: 'medium length hair, side part, textured crop, modern pompadour',
-        long: 'long hair, flowing hair, shoulder length, long layered hairstyle'
+        short: 'Change the hairstyle to a short buzz cut with faded sides, clean and modern',
+        medium: 'Change the hairstyle to a medium length textured crop with side part',
+        long: 'Change the hairstyle to long flowing shoulder length hair'
     };
 
     async function transformImage(style) {
@@ -78,30 +78,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    version: 'ddfc2b08d209f9fa8c1uj0jte6fg4d2lgv4fk0rdaxbjzltcjkma',
-                    input: {
-                        image: 'data:image/jpeg;base64,' + currentImageBase64,
-                        prompt: stylePrompts[style],
-                        negative_prompt: 'blurry, distorted, low quality',
-                        num_inference_steps: 30,
-                        guidance_scale: 7.5
-                    }
+                    image: 'data:image/jpeg;base64,' + currentImageBase64,
+                    prompt: stylePrompts[style]
                 })
             });
 
             const result = await response.json();
             if (result.error) throw new Error(result.error);
-            if (result.status === 'succeeded' && result.output) {
+            
+            if (result.output) {
                 const outputUrl = Array.isArray(result.output) ? result.output[0] : result.output;
                 originalResult.src = currentImageDataUrl;
                 transformedResult.src = outputUrl;
                 showSection(resultArea);
             } else {
-                throw new Error(result.error || 'Procesarea a eșuat.');
+                throw new Error('Procesarea a eșuat. Încearcă din nou.');
             }
         } catch (error) {
             let msg = error.message;
-            if (msg.includes('insufficient credit')) msg = 'Serviciul AI este temporar indisponibil.';
+            if (msg.includes('insufficient credit')) msg = 'Serviciul AI este temporar indisponibil. Revino mai târziu.';
             else if (msg.includes('Failed to fetch')) msg = 'Eroare de rețea. Verifică conexiunea.';
             showError(msg);
         }
