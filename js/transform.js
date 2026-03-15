@@ -64,10 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const stylePrompts = {
-        short: 'Change the hairstyle to a short buzz cut with faded sides, clean and modern',
-        medium: 'Change the hairstyle to a medium length textured crop with side part',
-        long: 'Change the hairstyle to long flowing shoulder length hair'
-    };
+    buzzcut: 'Change the hairstyle to a military buzz cut, very short all around, clean and minimal',
+    sidepart: 'Change the hairstyle to a classic side part, medium length on top combed to one side with shorter sides',
+    flowhair: 'Change the hairstyle to long flowing hair, shoulder length, natural and free-flowing',
+    fade: 'Change the hairstyle to a high skin fade with short textured top',
+    pompadour: 'Change the hairstyle to a classic pompadour, slicked back with volume on top',
+    curly: 'Change the hairstyle to curly hair, natural curls medium length',
+    mohawk: 'Change the hairstyle to a modern mohawk with faded sides',
+    mullet: 'Change the hairstyle to a modern mullet, short on top longer in the back',
+    braids: 'Change the hairstyle to braided hair, cornrow braids close to the scalp',
+    lowtaper: 'Change the hairstyle to a low taper fade, gradual fade around the ears and neckline with longer hair on top'
+};
 
     async function transformImage(style) {
         if (!currentImageBase64) { showError('Încarcă o imagine mai întâi.'); return; }
