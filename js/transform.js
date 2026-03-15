@@ -56,56 +56,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     
-function fixImageOrientation(file) {
-        return new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const img = new Image();
-                img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    const MAX_SIZE = 1024;
-                    let width = img.width;
-                    let height = img.height;
-                    
-                    if (width > height) {
-                        if (width > MAX_SIZE) {
-                            height *= MAX_SIZE / width;
-                            width = MAX_SIZE;
-                        }
-                    } else {
-                        if (height > MAX_SIZE) {
-                            width *= MAX_SIZE / height;
-                            height = MAX_SIZE;
-                        }
-                    }
-                    
-                    canvas.width = width;
-                    canvas.height = height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, width, height);
-                    resolve(canvas.toDataURL('image/jpeg', 0.9));
-                };
-                img.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        });
-    }
 
 
 
 
-
-
-
-
-async function handleFile(file) {
+function handleFile(file) {
         if (!file.type.startsWith('image/')) { showError('Încarcă un fișier imagine.'); return; }
-        const fixedDataUrl = await fixImageOrientation(file);
-        currentImageDataUrl = fixedDataUrl;
-        currentImageBase64 = fixedDataUrl.split(',')[1];
-        previewImg.src = currentImageDataUrl;
-        showSection(previewArea);
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            currentImageDataUrl = e.target.result;
+            currentImageBase64 = e.target.result.split(',')[1];
+            previewImg.src = currentImageDataUrl;
+            showSection(previewArea);
+        };
+        reader.readAsDataURL(file);
     }
+
 
 
 
@@ -119,9 +85,7 @@ async function handleFile(file) {
     
     
    
-        };
-        reader.readAsDataURL(file);
-    }
+        
 
     if (resetBtn) resetBtn.addEventListener('click', resetAll);
     if (newPhotoBtn) newPhotoBtn.addEventListener('click', resetAll);
