@@ -20,8 +20,10 @@ export default async function handler(req, res) {
             },
             body: JSON.stringify({
                 input: {
-                   input_image: body.image,
-                    prompt: body.prompt
+                    input_image: body.image,
+                    haircut_style: body.style,
+                    hair_color: body.color || 'No change',
+                    gender: body.gender || 'Autodetect'
                 }
             })
         });
