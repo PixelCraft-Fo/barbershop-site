@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — The Gentleman's Cut</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">✂</div>
+                <div class="logo-text">
+                    <span class="logo-name">The Gentleman's Cut</span>
+                    <span class="logo-tagline">Est. 2024</span>
+                </div>
+            </a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Acasă</a>
+                <a href="servicii.html" class="nav-link">Servicii</a>
+                <a href="transformare.html" class="nav-link">AI Studio</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Meniu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="mobile-nav-link">Acasă</a>
+        <a href="servicii.html" class="mobile-nav-link">Servicii</a>
+        <a href="transformare.html" class="mobile-nav-link">AI Studio</a>
+        <a href="contact.html" class="mobile-nav-link active">Contact</a>
+    </div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-content">
+            <span class="label">Hai la o Vorbă</span>
+            <h1 class="page-hero-title">Contactează<em>-ne</em></h1>
+            <p>Suntem aici pentru tine. Sună, scrie sau vino direct la salon.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- CONTACT INFO -->
+                <div class="contact-info" data-animate>
+                    <h2 class="title">Informații <em>Contact</em></h2>
+
+                    <div class="contact-card">
+                        <div class="cc-icon">📍</div>
+                        <div>
+                            <h4>Adresă</h4>
+                            <!-- PERSONALIZARE: Adresa -->
+                            <p>Strada Exemplu nr. 10<br>Sector 1, București</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="cc-icon">📞</div>
+                        <div>
+                            <h4>Telefon</h4>
+                            <!-- PERSONALIZARE: Telefon -->
+                            <p><a href="tel:+40700000000">0700 000 000</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="cc-icon">✉</div>
+                        <div>
+                            <h4>Email</h4>
+                            <!-- PERSONALIZARE: Email -->
+                            <p><a href="mailto:contact@gentlemanscut.ro">contact@gentlemanscut.ro</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="cc-icon">🕐</div>
+                        <div>
+                            <h4>Program</h4>
+                            <!-- PERSONALIZARE: Program -->
+                            <p>Luni – Vineri: 09:00 – 20:00<br>
+                            Sâmbătă: 10:00 – 18:00<br>
+                            Duminică: Închis</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-social">
+                        <h4>Urmărește-ne</h4>
+                        <div class="social-links">
+                            <!-- PERSONALIZARE: Link-uri social media -->
+                            <a href="#" class="social-big">Facebook</a>
+                            <a href="#" class="social-big">Instagram</a>
+                            <a href="#" class="social-big">TikTok</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTACT FORM -->
+                <div class="contact-form-wrap" data-animate>
+                    <h2 class="title">Trimite un <em>Mesaj</em></h2>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nume Complet</label>
+                            <input type="text" id="name" name="name" required placeholder="Ion Popescu">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="ion@exemplu.ro">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone" placeholder="0700 000 000">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Serviciu Dorit</label>
+                            <select id="service" name="service">
+                                <option value="">Alege un serviciu...</option>
+                                <!-- PERSONALIZARE: Servicii -->
+                                <option value="tuns">Tuns Clasic</option>
+                                <option value="barbierit">Bărbierit Clasic</option>
+                                <option value="styling">Styling Premium</option>
+                                <option value="tratament">Tratament Păr</option>
+                                <option value="vopsit">Vopsit Păr</option>
+                                <option value="royal">Pachet Royal</option>
+                                <option value="altele">Altele</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mesaj</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Scrie mesajul tău aici..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-gold btn-full">Trimite Mesajul</button>
+                    </form>
+                    <div class="form-success" id="formSuccess" style="display:none;">
+                        <div class="success-icon">✓</div>
+                        <h3>Mesaj trimis cu succes!</h3>
+                        <p>Te vom contacta în cel mai scurt timp.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="label">Locație</span>
+                <h2 class="title">Unde ne <em>găsești</em></h2>
+            </div>
+            <div class="map-container" data-animate>
+                <!-- PERSONALIZARE: Înlocuiește cu embed-ul tău Google Maps -->
+                <div class="map-placeholder">
+                    <span>🗺</span>
+                    <p>Google Maps Embed</p>
+                    <small>Înlocuiește cu iframe-ul de la Google Maps</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo"><div class="logo-icon">✂</div><span class="logo-name">The Gentleman's Cut</span></div>
+                    <p>Barbershop premium cu tradiție și pasiune.</p>
+                    <div class="social-links"><a href="#">Fb</a><a href="#">Ig</a><a href="#">Tk</a></div>
+                </div>
+                <div class="footer-col"><h4>Navigare</h4><a href="index.html">Acasă</a><a href="servicii.html">Servicii</a><a href="transformare.html">AI Studio</a><a href="contact.html">Contact</a></div>
+                <div class="footer-col"><h4>Contact</h4><p>📍 Strada Exemplu nr. 10, București</p><p>📞 0700 000 000</p><p>✉ contact@gentlemanscut.ro</p></div>
+                <div class="footer-col"><h4>Program</h4><p>Luni – Vineri: 09:00 – 20:00</p><p>Sâmbătă: 10:00 – 18:00</p><p>Duminică: Închis</p></div>
+            </div>
+            <div class="footer-bottom"><p>© 2024 The Gentleman's Cut. Toate drepturile rezervate.</p></div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

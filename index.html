@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- PERSONALIZARE: Schimbă numele salonului în title -->
+    <title>The Gentleman's Cut — Barbershop Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">✂</div>
+                <!-- PERSONALIZARE: Numele salonului -->
+                <div class="logo-text">
+                    <span class="logo-name">The Gentleman's Cut</span>
+                    <span class="logo-tagline">Est. 2024</span>
+                </div>
+            </a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link active">Acasă</a>
+                <a href="servicii.html" class="nav-link">Servicii</a>
+                <a href="transformare.html" class="nav-link">AI Studio</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Meniu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="mobile-nav-link active">Acasă</a>
+        <a href="servicii.html" class="mobile-nav-link">Servicii</a>
+        <a href="transformare.html" class="mobile-nav-link">AI Studio</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">✦ PREMIUM BARBERSHOP ✦</div>
+            <!-- PERSONALIZARE: Titlu și subtitlu -->
+            <h1 class="hero-title">Unde Stilul<br>Întâlnește <em>Tradiția</em></h1>
+            <p class="hero-subtitle">Oferim experiențe premium de grooming într-un cadru vintage, unde fiecare tuns este o operă de artă.</p>
+            <div class="hero-buttons">
+                <a href="transformare.html" class="btn btn-gold">Încearcă AI Studio</a>
+                <a href="servicii.html" class="btn btn-outline">Vezi Serviciile</a>
+            </div>
+        </div>
+        <div class="hero-deco hero-deco-left">❧</div>
+        <div class="hero-deco hero-deco-right">❧</div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section-dark" id="despre">
+        <div class="container">
+            <div class="ornament">✦ ✦ ✦</div>
+            <div class="about-grid">
+                <div class="about-img-wrap" data-animate>
+                    <div class="about-img-placeholder">
+                        <span class="placeholder-icon">✂</span>
+                        <span>Poza Salonului</span>
+                    </div>
+                    <div class="about-img-frame"></div>
+                    <!-- PERSONALIZARE: Ani de experiență -->
+                    <div class="experience-badge">
+                        <span class="exp-num">15+</span>
+                        <span class="exp-label">Ani de<br>Experiență</span>
+                    </div>
+                </div>
+                <div class="about-content" data-animate>
+                    <span class="label">Despre Noi</span>
+                    <!-- PERSONALIZARE: Textul despre salon -->
+                    <h2 class="title">Mai mult decât un simplu <em>barbershop</em></h2>
+                    <p>De peste 15 ani, oferim servicii premium de grooming într-un ambient care îmbină eleganța clasică cu tehnicile moderne. Fiecare client care ne trece pragul devine parte din familia noastră.</p>
+                    <p>Echipa noastră de profesioniști pasionați transformă fiecare vizită într-o experiență memorabilă, folosind produse premium și tehnici de ultimă generație.</p>
+                    <div class="stats-row">
+                        <!-- PERSONALIZARE: Statistici -->
+                        <div class="stat"><span class="stat-num">5000+</span><span class="stat-label">Clienți</span></div>
+                        <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Ani</span></div>
+                        <div class="stat"><span class="stat-num">8</span><span class="stat-label">Specialiști</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES PREVIEW -->
+    <section class="section" id="servicii-preview">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="label">Ce Oferim</span>
+                <h2 class="title">Serviciile <em>Noastre</em></h2>
+                <p class="subtitle">De la tunsori clasice la tratamente premium.</p>
+            </div>
+            <div class="cards-grid">
+                <!-- PERSONALIZARE: Servicii și prețuri -->
+                <div class="card" data-animate>
+                    <div class="card-icon">✂</div>
+                    <h3>Tuns Clasic</h3>
+                    <p>Tunsoare clasică realizată cu atenție la detalii.</p>
+                    <span class="price">50 Lei</span>
+                </div>
+                <div class="card" data-animate>
+                    <div class="card-icon">🪒</div>
+                    <h3>Bărbierit & Barbă</h3>
+                    <p>Conturare și îngrijire barbă cu prosop cald.</p>
+                    <span class="price">40 Lei</span>
+                </div>
+                <div class="card" data-animate>
+                    <div class="card-icon">💈</div>
+                    <h3>Styling Premium</h3>
+                    <p>Consultanță personalizată și produse profesionale.</p>
+                    <span class="price">70 Lei</span>
+                </div>
+                <div class="card" data-animate>
+                    <div class="card-icon">🧴</div>
+                    <h3>Tratament Păr</h3>
+                    <p>Tratamente intensive pentru revitalizarea părului.</p>
+                    <span class="price">80 Lei</span>
+                </div>
+            </div>
+            <div class="center-cta" data-animate>
+                <a href="servicii.html" class="btn btn-gold">Vezi Toate Serviciile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI PREVIEW -->
+    <section class="section section-dark" id="ai-preview">
+        <div class="container">
+            <div class="ai-grid">
+                <div class="ai-content" data-animate>
+                    <span class="label">Noutate</span>
+                    <h2 class="title">AI Hair <em>Studio</em></h2>
+                    <p>Vrei să vezi cum ți-ar sta cu o frizură nouă înainte de a te așeza în scaun? Folosește studioul nostru AI.</p>
+                    <ul class="feature-list">
+                        <li>✦ Încarcă o poză cu tine</li>
+                        <li>✦ Alege stilul dorit</li>
+                        <li>✦ Vezi rezultatul instant</li>
+                    </ul>
+                    <a href="transformare.html" class="btn btn-gold">Încearcă Acum</a>
+                </div>
+                <div class="ai-visual" data-animate>
+                    <div class="ai-mockup">
+                        <div class="mockup-box">
+                            <span>Înainte</span>
+                        </div>
+                        <div class="mockup-arrow">→</div>
+                        <div class="mockup-box mockup-gold">
+                            <span>După AI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section" id="testimoniale">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="label">Recenzii</span>
+                <h2 class="title">Ce Spun <em>Clienții</em></h2>
+            </div>
+            <div class="testimonials-grid">
+                <!-- PERSONALIZARE: Testimoniale -->
+                <div class="testimonial" data-animate>
+                    <div class="stars">★★★★★</div>
+                    <p>"Cel mai bun barbershop din oraș. Atmosfera vintage, servicii impecabile și o echipă care știe ce face."</p>
+                    <div class="author">
+                        <div class="avatar">A</div>
+                        <div><strong>Andrei M.</strong><br><small>Client fidel de 3 ani</small></div>
+                    </div>
+                </div>
+                <div class="testimonial" data-animate>
+                    <div class="stars">★★★★★</div>
+                    <p>"Am încercat funcția AI și mi-a plăcut enorm! Am putut vedea cum îmi stă frizura înainte de tuns."</p>
+                    <div class="author">
+                        <div class="avatar">D</div>
+                        <div><strong>Dan P.</strong><br><small>Client nou</small></div>
+                    </div>
+                </div>
+                <div class="testimonial" data-animate>
+                    <div class="stars">★★★★★</div>
+                    <p>"Vin aici de peste 5 ani și nu m-am dezamăgit niciodată. Profesionalism la cel mai înalt nivel."</p>
+                    <div class="author">
+                        <div class="avatar">M</div>
+                        <div><strong>Mihai T.</strong><br><small>Client fidel de 5 ani</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-content" data-animate>
+                <div class="cta-icon">✂</div>
+                <h2 class="title">Pregătit pentru o schimbare de <em>look</em>?</h2>
+                <!-- PERSONALIZARE: Telefon -->
+                <p>Sună acum sau vizitează-ne la salon.</p>
+                <div class="cta-buttons">
+                    <a href="tel:+40700000000" class="btn btn-gold">Sună: 0700 000 000</a>
+                    <a href="contact.html" class="btn btn-outline">Contactează-ne</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">✂</div>
+                        <!-- PERSONALIZARE: Numele salonului -->
+                        <span class="logo-name">The Gentleman's Cut</span>
+                    </div>
+                    <p>Barbershop premium cu tradiție și pasiune.</p>
+                    <div class="social-links">
+                        <!-- PERSONALIZARE: Link-uri social media -->
+                        <a href="#">Fb</a>
+                        <a href="#">Ig</a>
+                        <a href="#">Tk</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigare</h4>
+                    <a href="index.html">Acasă</a>
+                    <a href="servicii.html">Servicii</a>
+                    <a href="transformare.html">AI Studio</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <!-- PERSONALIZARE: Date contact -->
+                    <p>📍 Strada Exemplu nr. 10, București</p>
+                    <p>📞 0700 000 000</p>
+                    <p>✉ contact@gentlemanscut.ro</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Program</h4>
+                    <!-- PERSONALIZARE: Program -->
+                    <p>Luni – Vineri: 09:00 – 20:00</p>
+                    <p>Sâmbătă: 10:00 – 18:00</p>
+                    <p>Duminică: Închis</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <!-- PERSONALIZARE: An și nume -->
+                <p>© 2024 The Gentleman's Cut. Toate drepturile rezervate.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

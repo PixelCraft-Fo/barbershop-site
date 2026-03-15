@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Studio — The Gentleman's Cut</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">✂</div>
+                <div class="logo-text">
+                    <span class="logo-name">The Gentleman's Cut</span>
+                    <span class="logo-tagline">Est. 2024</span>
+                </div>
+            </a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Acasă</a>
+                <a href="servicii.html" class="nav-link">Servicii</a>
+                <a href="transformare.html" class="nav-link active">AI Studio</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Meniu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="mobile-nav-link">Acasă</a>
+        <a href="servicii.html" class="mobile-nav-link">Servicii</a>
+        <a href="transformare.html" class="mobile-nav-link active">AI Studio</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-content">
+            <span class="label">Tehnologie</span>
+            <h1 class="page-hero-title">AI Hair <em>Studio</em></h1>
+            <p>Încarcă o poză și vezi cum ți-ar sta cu o frizură nouă.</p>
+        </div>
+    </section>
+
+    <!-- AI TRANSFORM -->
+    <section class="section">
+        <div class="container">
+            <div class="ai-studio">
+                <!-- UPLOAD AREA -->
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-zone" id="uploadZone">
+                        <div class="upload-icon">📷</div>
+                        <h3>Încarcă o poză</h3>
+                        <p>Trage o imagine aici sau click pentru a selecta</p>
+                        <input type="file" id="fileInput" accept="image/*" hidden>
+                        <button class="btn btn-gold" onclick="document.getElementById('fileInput').click()">Alege Poza</button>
+                    </div>
+                </div>
+
+                <!-- PREVIEW -->
+                <div class="preview-area" id="previewArea" style="display:none;">
+                    <div class="preview-container">
+                        <img id="previewImg" src="" alt="Preview">
+                        <button class="reset-btn" id="resetBtn">✕ Alege altă poză</button>
+                    </div>
+
+                    <!-- STYLE BUTTONS -->
+                    <div class="style-section">
+                        <h3>Alege lungimea frizurii</h3>
+                        <div class="style-buttons">
+                            <button class="style-btn" data-style="short">
+                                <span class="style-icon">✂</span>
+                                <span class="style-name">Scurt</span>
+                                <span class="style-desc">Fade, buzz cut, crew cut</span>
+                            </button>
+                            <button class="style-btn" data-style="medium">
+                                <span class="style-icon">💈</span>
+                                <span class="style-name">Mediu</span>
+                                <span class="style-desc">Side part, pompadour, textured</span>
+                            </button>
+                            <button class="style-btn" data-style="long">
+                                <span class="style-icon">👑</span>
+                                <span class="style-name">Lung</span>
+                                <span class="style-desc">Flow, man bun, shoulder length</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LOADING -->
+                <div class="loading-area" id="loadingArea" style="display:none;">
+                    <div class="spinner"></div>
+                    <p>AI-ul procesează imaginea...</p>
+                    <small>Poate dura 15-30 secunde</small>
+                </div>
+
+                <!-- RESULT -->
+                <div class="result-area" id="resultArea" style="display:none;">
+                    <h3>Rezultat</h3>
+                    <div class="result-compare">
+                        <div class="result-box">
+                            <span class="result-label">Original</span>
+                            <img id="originalResult" src="" alt="Original">
+                        </div>
+                        <div class="result-arrow">→</div>
+                        <div class="result-box">
+                            <span class="result-label result-label-gold">Transformat</span>
+                            <img id="transformedResult" src="" alt="Transformat">
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button class="btn btn-gold" id="tryAgainBtn">Încearcă Alt Stil</button>
+                        <button class="btn btn-outline" id="newPhotoBtn">Încarcă Altă Poză</button>
+                    </div>
+                </div>
+
+                <!-- ERROR -->
+                <div class="error-area" id="errorArea" style="display:none;">
+                    <div class="error-box">
+                        <span class="error-icon">⚠</span>
+                        <p id="errorMessage"></p>
+                        <button class="btn btn-outline" id="errorRetryBtn">Încearcă Din Nou</button>
+                    </div>
+                </div>
+
+               </div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo"><div class="logo-icon">✂</div><span class="logo-name">The Gentleman's Cut</span></div>
+                    <p>Barbershop premium cu tradiție și pasiune.</p>
+                    <div class="social-links"><a href="#">Fb</a><a href="#">Ig</a><a href="#">Tk</a></div>
+                </div>
+                <div class="footer-col"><h4>Navigare</h4><a href="index.html">Acasă</a><a href="servicii.html">Servicii</a><a href="transformare.html">AI Studio</a><a href="contact.html">Contact</a></div>
+                <div class="footer-col"><h4>Contact</h4><p>📍 Strada Exemplu nr. 10, București</p><p>📞 0700 000 000</p><p>✉ contact@gentlemanscut.ro</p></div>
+                <div class="footer-col"><h4>Program</h4><p>Luni – Vineri: 09:00 – 20:00</p><p>Sâmbătă: 10:00 – 18:00</p><p>Duminică: Închis</p></div>
+            </div>
+            <div class="footer-bottom"><p>© 2024 The Gentleman's Cut. Toate drepturile rezervate.</p></div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/transform.js"></script>
+</body>
+</html>
