@@ -63,17 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => transformImage(btn.dataset.style));
     });
 
-    const stylePrompts = {
-        buzzcut: 'Change the hairstyle to a military buzz cut, very short all around, clean and minimal',
-        sidepart: 'Change the hairstyle to a classic side part, medium length on top combed to one side with shorter sides',
-        flowhair: 'Change the hairstyle to long flowing hair, shoulder length, natural and free-flowing',
-        fade: 'Change the hairstyle to a high skin fade with short textured top',
-        pompadour: 'Change the hairstyle to a classic pompadour, slicked back with volume on top',
-        curly: 'Change the hairstyle to curly hair, natural curls medium length',
-        mohawk: 'Change the hairstyle to a modern mohawk with faded sides',
-        mullet: 'Change the hairstyle to a modern mullet, short on top longer in the back',
-        braids: 'Change the hairstyle to braided hair, cornrow braids close to the scalp',
-        lowtaper: 'Change the hairstyle to a low taper fade, gradual fade around the ears and neckline with longer hair on top'
+   const stylePrompts = {
+        buzzcut: 'Give this person a buzz cut hairstyle. Shave the hair very short all around the head, military style, 3mm length all over.',
+        sidepart: 'Give this person a classic side part hairstyle. Medium length on top, combed neatly to one side, shorter tapered sides.',
+        flowhair: 'Give this person long flowing hair reaching past the shoulders. Wavy, natural, free-flowing long hair.',
+        fade: 'Give this person a high skin fade haircut. Skin shaved on the sides gradually blending into textured short hair on top.',
+        pompadour: 'Give this person a pompadour hairstyle. Hair swept upward and back from the forehead with lots of volume on top, short sides.',
+        curly: 'Give this person tight curly hair. Natural afro-textured curls, medium length, bouncy and voluminous curly hair all over.',
+        mohawk: 'Give this person a mohawk hairstyle. Sides of the head completely shaved, with a tall strip of hair running from front to back on top.',
+        mullet: 'Give this person a mullet hairstyle. Short hair on top and sides, but long hair flowing down the back of the neck and shoulders.',
+        braids: 'Give this person cornrow braids. Hair braided in tight straight rows close to the scalp, running from the forehead to the back of the head.',
+        lowtaper: 'Give this person a low taper fade. Hair gradually fades shorter around the ears and neckline only, keeping longer textured hair on top.'
     };
 
     async function transformImage(style) {
