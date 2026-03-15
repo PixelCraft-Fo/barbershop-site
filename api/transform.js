@@ -9,28 +9,36 @@ export default async function handler(req, res) {
     const API_TOKEN = process.env.REPLICATE_API_TOKEN;
 
     try {
-        const response = await fetch('https://api.replicate.com/v1/predictions', {
+        const body = req.body;
+        
+        const response = await fetch('https://api.replicate.com/v1/models/flux-kontext-apps/change-haircut/predictions', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + API_TOKEN,
                 'Content-Type': 'application/json',
+                'Prefer': 'wait'
             },
-            body: JSON.stringify(req.body)
+            body: JSON.stringify({
+                input: {
+                    image: body.image,
+                    prompt: body.prompt
+                }
+            })
         });
-        const data = await response.json();
-        
-        if (data.urls && data.urls.get) {
-            let result = data;
+
+        let result = await response.json();
+
+        if (result.urls && result.urls.get && result.status !== 'succeeded' && result.status !== 'failed') {
             while (result.status !== 'succeeded' && result.status !== 'failed') {
                 await new Promise(r => setTimeout(r, 2000));
-                const poll = await fetch(data.urls.get, {
+                const poll = await fetch(result.urls.get, {
                     headers: { 'Authorization': 'Bearer ' + API_TOKEN }
                 });
                 result = await poll.json();
             }
-            return res.status(200).json(result);
         }
-        return res.status(200).json(data);
+
+        return res.status(200).json(result);
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
